@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>jQuery QueryBuilder Example</title>
+
+<!-- font-awesome CSS  -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+<link href="../../../theme/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="../../../theme/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+
+<!-- bootstrap 3  -->
+<link href="../../../theme/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../../theme/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+	
+<!-- Select 4.0.12  CSS  -->
+<link href="../../../library/select2 4.0.12/css/select2.min.css" rel="stylesheet">
+<!-- Select Bootstrap 1.13.12 -->
+<link href="../../../library/select2 4.0.12/css/bootstrap-select.css" rel="stylesheet">
+
+<!-- Template CSS  -->
+<link href="../../../theme/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />	
+
+<!-- links for library -->
+<link rel="stylesheet" href="../node_modules/bootstrap-select/dist/css/bootstrap-select.css">
+<link rel="stylesheet" href="../node_modules/chosenjs/chosen.css">
+<link rel="stylesheet" href="../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css">
+<link rel="stylesheet" href="../node_modules/bootstrap-slider/dist/css/bootstrap-slider.css">
+<link rel="stylesheet" href="../node_modules/selectize/dist/css/selectize.bootstrap3.css">
+<link rel="stylesheet" href="../dist/css/query-builder.default.css" id="qb-theme">
+<link rel="stylesheet" href="../dist/css/flags.css">
+
+<!-- Customize CSS  -->
+<link rel="stylesheet" href="../dist/css/query-builder-customize.css">  
+<style>
+.select2-container *:focus {
+    outline: none;
+}
+.has-error > span > span > span {
+    border-color: #e73d4a !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+}
+</style>
+</head>
+
+<body> 
+
+	<div class="col-md-12 RuleCss">
+		<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-social-dribbble font-green"></i> <span
+						class="caption-subject font-green bold ">View Rule Details</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+			<div class="row">
+				<div class="col-lg-12">		 
+	
+				<div class="form-group">
+					<label>Rule Name</label> <input class="form-control input-sm" id="txtName" maxlength="50">
+				</div>
+				
+				<div class="form-group listProtocol">
+					<label style="display: block;">Protocol</label> 
+					<select style="width: 100%;max-width:100%" class="form-control input-sm" id="listProtocol"></select>
+				</div>
+				
+				<div class="form-group">
+					<label>Condition(s)</label>  
+									
+				<div id="builder"></div>
+				</div>
+				<br>
+				<div class="span4 pull-right" style="padding-bottom: 20px;">
+				 
+				<div class="btn-group" style = "display: none;">        
+				<button class="btn btn-success parse-mongo">Apply Filter</button> &nbsp;
+				</div>
+				
+				<br>
+					
+					
+				 <div class="span4">								
+				<div class="pull-right">   
+				 
+				<button class="btn btn-danger" id= "Closed" onclick="Close();return false;">Close</button>
+				</div>	
+								
+				</div>
+											
+				<!-- <div class="span4">
+								
+				<div class="pull-right">    
+				 <div class="btn-group">
+				  <button class="btn reset" style="background: #ec8153;color: #fff;border-color: #f3aa8b;">Reset</button>
+				</div>
+				 
+				<button class="btn btn-success" onclick="IsFormComplete(0);return false;">Save</button>
+				<button class="btn btn-success SaveANDCopy" onclick="IsFormComplete(1);return false;">Save And Copy</button>
+				<button class="btn btn-danger" onclick="Cancel();return false;">Cancel</button>
+				</div>	
+								
+				</div>	 -->
+				</div>
+				<br>
+				
+				<div id="result"  class = "hide" >
+				   <h3>Output <span id = "Match"></span></h3>
+				   <pre></pre>
+				 </div>								  
+				 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+ 
+<!-- links for library  -->
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../node_modules/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="../node_modules/chosenjs/chosen.jquery.js"></script>
+<script src="../node_modules/bootbox/bootbox.js"></script>
+<script src="../node_modules/bootstrap-slider/dist/bootstrap-slider.js"></script>
+<script src="../node_modules/selectize/dist/js/standalone/selectize.js"></script>
+<script src="../node_modules/jquery-extendext/jQuery.extendext.js"></script>
+<script src="../node_modules/sql-parser-mistic/browser/sql-parser.js"></script>
+<script src="../node_modules/dot/doT.js"></script>
+<script src="../node_modules/interactjs/dist/interact.js"></script>
+
+<!-- select2 4.0.12  -->
+<script src="../../../library/select2 4.0.12/js/select2.full.min.js"></script> 
+
+<!-- injector:js -->
+<script src="../src/main.js"></script>
+<script src="../src/defaults.js"></script>
+<script src="../src/plugins.js"></script>
+<script src="../src/core.js"></script>
+<script src="../src/public.js"></script>
+<script src="../src/data.js"></script>
+<script src="../src/template.js"></script>
+<script src="../src/utils.js"></script>
+<script src="../src/model.js"></script>
+<script src="../src/jquery.js"></script>
+<script src="../src/plugins/bt-checkbox/plugin.js"></script>
+<script src="../src/plugins/bt-selectpicker/plugin.js"></script>
+<script src="../src/plugins/bt-tooltip-errors/plugin.js"></script>
+<script src="../src/plugins/change-filters/plugin.js"></script>
+<script src="../src/plugins/chosen-selectpicker/plugin.js"></script>
+<script src="../src/plugins/filter-description/plugin.js"></script>
+<script src="../src/plugins/invert/plugin.js"></script>
+<script src="../src/plugins/mongodb-support/plugin.js"></script>
+<script src="../src/plugins/not-group/plugin.js"></script>
+<script src="../src/plugins/sortable/plugin.js"></script>
+<script src="../src/plugins/sql-support/plugin.js"></script>
+<script src="../src/plugins/unique-filter/plugin.js"></script>
+<script src="../dist/i18n/query-builder.en.js"></script>
+<!-- endinjector -->
+
+<!--  minified UMD module -->
+<script type="text/javascript" src="../node_modules/mingo/dist/mingo.min.js"></script>
+
+
+<!-- Some Function common  -->
+<script type="text/javascript" src="../../../library/Common/Common.js"></script>
+
+
+
+<script>
+
+var parameters = location.search.substring(1).split("&");
+var OpenFAlrarm = parameters[0].split("=")[1];
+ 
+var IDRule = decodeURIComponent(parameters[1].split("=")[1]);  
+var NameRule = decodeURIComponent(parameters[2].split("=")[1]);  
+var Rule1;
+
+$( document ).ready(function() {
+	
+	$('#txtName').val(NameRule);// for view rule name 
+	FillProtocol();
+	FillData(IDRule);
+	
+	$('.RuleCss').css('padding', '10px');	
+	$('.portlet.light').css('padding-bottom', '0px').css('margin-bottom', '3px'); 
+
+});
+
+
+
+function FillProtocol() {
+	Str = '' ;
+	Str = "<option value='1'>MAP</option><option value='2'>CAP</option><option value='3'>ISUP</option>"
+		+"<option value='4'>GTP</option>";
+			 
+	$('#listProtocol').empty().append(Str);
+ 
+	sortDropDownListByText('listProtocol');
+	var Str1 = "<option value=-1> Select Protocol</option>";
+	$('#listProtocol').prepend(Str1);
+	$('#listProtocol').val(-1);
+	$('#listProtocol').select2();
+	$('.listProtocol > .select2-container').css("min-width","100%");
+
+}
+
+function sortDropDownListByText(ListName) {
+	// Loop for each select element on the page.
+	//alert(1)
+	$("#" + ListName).each(function() {
+
+		// Keep track of the selected option.
+		var selectedValue = $(this).val();
+
+		// Sort all the options by text. I could easily sort these by val.
+		$(this).html($("option", $(this)).sort(function(a, b) {
+			return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+		}));
+
+		// Select one option.
+		$(this).val(selectedValue);
+	});
+
+	$("#" + ListName + " > option:eq(0)").attr("selected", "selected")
+}
+
+FilterData = [] ; 
+
+function CreateCondition(ProtocolType,Condition_Web){
+	
+$('#builder').queryBuilder('destroy');
+	
+if(ProtocolType == 3 ){ // ISUP
+	
+	$.ajax({
+		type : 'post',
+		url : '../../../RuleControlPath_RA',
+		cache : false,
+		async : false,
+		data : 'MethodName=GetReleaseCause' ,
+		success : function(data) {
+	 
+			var Obj = $.parseJSON(data);
+			Str = "";
+			$.each(Obj, function(key, value) {
+				 Str += '{"label": "'+value+'", "value": "'+key+'"},';
+				 
+		});
+			
+		Str=Str.substring(0, Str.length - 1);  
+		FilterData=JSON.parse('[{"id":"mtp3_opc","field":"mtp3_opc","label":"OPC","type":"integer","input":"text","size":11 ,"data": { "class": "form-control" }'
+			+',"operators": ["equal", "not_equal"]}, '
+		+ '{"id":"mtp3_dpc","field":"mtp3_dpc","label":"DPC","type":"integer","input":"text","size":11,"data": { "class": "form-control" } '
+			+',"operators": ["equal", "not_equal"]}, ' 
+		+'{"id":"is_acm_received","field":"is_acm_received","label":"is_acm_received","type":"string","input":"checkbox","default_value":"0","values": {"1": "is_acm_received"} '
+			+' ,"operators": ["equal", "not_equal"] , "allow_empty":true },'
+		+'{"id":"is_anm_received","field":"is_anm_received","label":"is_anm_received","type":"string","input":"checkbox","default_value":"0","values": {"1": "is_anm_received"} '
+			+' ,"operators": ["equal", "not_equal"] , "allow_empty":true }, '
+		+'{"id":"release_cause","field":"release_cause","label":"Release Cause","type":"string","input":"select","placeholder": "Select Release Cause" , "values": ['+Str+'] '
+			+',"operators": ["equal", "not_equal"] }] '
+		);
+			
+		}	
+	});
+
+	} else if(ProtocolType == 4 ){ // GTP
+
+	$.ajax({
+		type : 'post',
+		url : '../../../ErrorsControlPath_RA',
+		cache : false,
+		async : false,
+		data : 'MethodName=GetByCategoryGTP' ,
+		success : function(data) {
+	 	 console.log(data);
+			var Obj = $.parseJSON(data);
+			Str = "";
+			$.each(Obj, function(key, value) {
+				 Str += '{"label": "'+$.trim(value)+'", "value": "'+$.trim(key)+'"},';
+				 
+			});
+			Str=Str.substring(0, Str.length - 1);
+			
+			MessageTypeStr = '{"label": "Create", "value": "16"},{"label": "Update", "value": "18"},{"label": "Delete", "value": "20"}';
+			
+			
+			FilterData=JSON.parse('[{"id":"ip_src","field":"ip_src","label":"Source IP","type":"string","input":"text","size":20 ,"data": { "class": "form-control" }'
+						+',"operators": ["equal", "not_equal" , "begins_with" , "not_begins_with" ]}, '
+					+'{"id":"ip_dst","field":"ip_dst","label":"Destination IP","type":"string","input":"text","size":20,"data": { "class": "form-control" } '
+						+',"operators": ["equal", "not_equal" , "begins_with" , "not_begins_with" ]}, ' 
+					+'{"id":"msg_type","field":"msg_type","label":"Message Type","type":"string","input":"select","placeholder": "Select Message Type" , "values": ['+MessageTypeStr+'] '
+						+',"operators": ["equal", "not_equal"] },'
+					+'{"id":"apn","field":"apn","label":"APN","type":"string","input":"text","size":20,"data": { "class": "form-control" } '
+						+',"operators": ["equal", "not_equal" , "begins_with" , "not_begins_with" ]}, '
+					+'{"id":"error_id","field":"error_id","label":"Error","type":"string","input":"select","placeholder": "Select Error" , "values": ['+Str+'] '
+	 					+',"operators": ["equal", "not_equal" ]} ] '
+					);
+			
+		}	
+	});	
+		
+	} else if(ProtocolType == 1 ){ // MAP
+		
+		$.ajax({
+			type : 'post',
+			url : '../../../FirstLocalOPCodeControlPath_RA',
+			cache : false,
+			async : false,
+			data : 'MethodName=GetByProtocolType&ProtocolType=1' , // ProtocolType == 1 Map
+			success : function(data) {
+		 
+				var Obj = $.parseJSON(data);
+				FirtLocalOPCode = "";
+				$.each(Obj, function(key, value) {
+					FirtLocalOPCode += '{"label": "'+value+'", "value": "'+key+'"},';
+					 
+				});
+				FirtLocalOPCode=FirtLocalOPCode.substring(0, FirtLocalOPCode.length - 1);
+				
+				
+			}	
+		});	
+		
+		
+		$.ajax({
+			type : 'post',
+			url : '../../../ErrorsControlPath_RA',
+			cache : false,
+			async : false,
+			data : 'MethodName=GetBySpecificCategory&ProtocolType=1' , // ProtocolType == 1 Map
+			success : function(data) {
+		 
+				var Obj = $.parseJSON(data);
+				ErrorID = "";
+				$.each(Obj, function(key, value) {
+					ErrorID += '{"label": "'+value+'", "value": "'+key+'"},';
+					 
+				});
+				ErrorID=ErrorID.substring(0, ErrorID.length - 1);
+			}	
+		});	
+		
+		
+		FilterData=JSON.parse('[{"id":"sccp_calling_gt","field":"sccp_calling_gt","label":"SCCP Calling Global Title","type":"string","input":"text","size":20 ,"data": { "class": "form-control" } '
+					+',"operators": ["equal", "not_equal" , "begins_with" , "not_begins_with" ]}, '
+				+'{"id":"sccp_called_gt","field":"sccp_called_gt","label":"SCCP Called Global Title","type":"string","input":"text","size":20,"data": { "class": "form-control" } '
+					+',"operators": ["equal", "not_equal" , "begins_with" , "not_begins_with" ]}, ' 
+				+'{"id":"first_local_op_code","field":"first_local_op_code","label":"Local Operation Code","type":"string","input":"select","placeholder": "First Local Operation Code" , "values": ['+FirtLocalOPCode+'] '
+					+',"operators": ["equal", "not_equal"] },'
+				+'{"id":"error_id","field":"error_id","label":"Error","type":"string","input":"select","placeholder": "Select Error" , "values": ['+ErrorID+'] '
+					+',"operators": ["equal", "not_equal"] } ] '
+				);
+		
+		
+			
+	} else if(ProtocolType == 2 ){ // CAP
+		
+		$.ajax({
+			type : 'post',
+			url : '../../../RuleControlPath_RA',
+			cache : false,
+			async : false,
+			data : 'MethodName=GetReleaseCause' ,
+			success : function(data) {
+		 
+				var Obj = $.parseJSON(data);
+				ReleaseCause = "";
+				$.each(Obj, function(key, value) {
+					ReleaseCause += '{"label": "'+value+'", "value": "'+key+'"},';
+				});	 
+				ReleaseCause=ReleaseCause.substring(0, ReleaseCause.length - 1);
+			}
+		});	
+		
+		$.ajax({
+			type : 'post',
+			url : '../../../ErrorsControlPath_RA',
+			cache : false,
+			async : false,
+			data : 'MethodName=GetBySpecificCategory&ProtocolType=2' , // ProtocolType == 2 CAP
+			success : function(data) {
+		 
+				var Obj = $.parseJSON(data);
+				ErrorID = "";
+				$.each(Obj, function(key, value) {
+					ErrorID += '{"label": "'+value+'", "value": "'+key+'"},';
+					 
+				});
+				ErrorID=ErrorID.substring(0, ErrorID.length - 1);
+			}	
+		});	
+		
+		
+		FilterData=JSON.parse('[{"id":"sccp_calling_gt","field":"sccp_calling_gt","label":"SCCP Calling Global Title","type":"string","input":"text","size":20 ,"data": { "class": "form-control" } '
+					+',"operators": ["equal", "not_equal" , "begins_with" , "not_begins_with" ]}, '
+				+'{"id":"sccp_called_gt","field":"sccp_called_gt","label":"SCCP Called Global Title","type":"string","input":"text","size":20,"data": { "class": "form-control" } '
+					+',"operators": ["equal", "not_equal" , "begins_with" , "not_begins_with" ]}, ' 			
+				+'{"id":"error_id","field":"error_id","label":"Error","type":"string","input":"select","placeholder": "Select Error" , "values": ['+ErrorID+'] '
+					+' , "operators": ["equal", "not_equal"] },'
+				+'{"id":"json_data->>\'$.releaseCause\'","field":"json_data->>\'$.releaseCause\'","label":"Release Cause","type":"string","input":"select" '
+					+',"placeholder": "Select Release Cause" , "values": ['+ReleaseCause+'] , "operators": ["equal", "not_equal"]}] ' );
+		
+		
+			
+	}  
+
+  $('[data-toggle="tooltip"]').tooltip();
+
+  var $b = $('#builder');
+
+  var options = { allow_empty: true,
+    //default_filter: 'name',
+    sort_filters: true,
+    optgroups: {
+      core: {
+        en: 'Core',
+        fr: 'Coeur'
+      }
+    },
+
+    plugins: {
+      'bt-tooltip-errors': { delay: 100 },
+      'sortable': {icon : 'glyphicon glyphicon-sort'},
+      //'filter-description': { mode: 'bootbox' },
+      'bt-selectpicker': null,
+	   //'chosen-selectpicker': null,
+      'unique-filter': null,
+      'bt-checkbox': { color: 'primary' },
+      'invert': null,
+      'not-group': null
+    },
+    lang: {
+        add_rule: 'Add Rule', // To change label to add rule 
+        add_group: 'Add Group' // To change label to add group 
+    },
+
+ // standard operators in custom optgroups
+    /*operators: [
+      { type: 'equal', optgroup: 'basic' },
+      { type: 'not_equal', optgroup: 'basic' },
+      { type: 'in', optgroup: 'basic'  },
+      { type: 'not_in', optgroup: 'basic'  },
+      
+      { type: 'less', optgroup: 'numbers' },
+      { type: 'less_or_equal', optgroup: 'numbers' },
+      { type: 'greater', optgroup: 'numbers' },
+      { type: 'greater_or_equal', optgroup: 'numbers' },
+      { type: 'between', optgroup: 'numbers' },
+      { type: 'not_between', optgroup: 'numbers' },
+      
+      { type: 'begins_with', optgroup: 'strings' }, 
+      { type: 'not_begins_with', optgroup: 'strings' },
+      { type: 'contains', optgroup: 'strings' },
+      { type: 'not_contains', optgroup: 'strings' },
+      { type: 'ends_with', optgroup: 'strings' },
+      { type: 'not_ends_with', optgroup: 'strings'  },
+      
+      { type: 'is_empty' },
+      { type: 'is_not_empty' },
+      { type: 'is_null' },
+      { type: 'is_not_null' },
+      
+    ],*/
+    
+    filters:  FilterData
+  };
+
+  // init
+  
+  $('#builder').queryBuilder(options);
+
+  $('#builder').on('afterCreateRuleInput.queryBuilder', function(e, rule) { // function to make anything after created element 
+ 
+	if(rule.filter.input == "select" || rule.filter.type == "string"){ // check if select make search on select use select2 libaray 
+ 	
+	 $('#'+rule.id+' > .rule-value-container > select').select2();
+	
+	}
+	 
+    if (rule.filter.plugin == 'selectize') { // set all select same size 
+ 
+      rule.$el.find('.rule-value-container').css('min-width', '200px')
+        .find('.selectize-control').removeClass('form-control');
+      
+    }
+  });
+  Rule1 = JSON.parse(Condition_Web.replace(/'"'/gi, "'") );
+  $('#builder').queryBuilder('reset'); // make reset for rebuild rule 
+  $('#builder').queryBuilder('setRules', Rule1);  // build new rule  
+  $('button , .btn , input , select , label').prop('disabled', true);
+  $('#Closed').prop('disabled', false); 
+  
+}		
+  
+  
+
+function FillData(ID) {
+
+	$.ajax({
+		type : 'post',
+		url : '../../../RuleControlPath_RA',
+		cache : false,
+		async : false,
+		data : 'MethodName=getByID&ID=' + encodeURIComponent(ID),
+		success : function(data) {
+
+			if (data != 0) {
+
+				var Obj = $.parseJSON(data);
+				 
+				$('#listProtocol').val(Obj["Protocol"]);
+				$('#listProtocol').select2();
+				$('.listProtocol > .select2-container').css("min-width","100%");
+				CreateCondition(Obj["Protocol"],Obj["Condition_Web"]);
+				
+			}  
+		}
+	});
+}
+ 
+ function Close(){
+	 
+	 window.parent.Custombox.modal.close();
+ }
+</script>
+</body>
+</html>

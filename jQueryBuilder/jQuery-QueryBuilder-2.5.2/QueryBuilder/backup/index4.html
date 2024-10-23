@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>jQuery QueryBuilder Example</title>
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+	rel="stylesheet" type="text/css" />
+	
+<link href="./theme/assets/global/plugins/jstree/dist/themes/default/style.min.css"
+	rel="stylesheet" type="text/css" />
+	
+<link href="./theme/assets/global/css/plugins.min.css"
+	rel="stylesheet" type="text/css" />
+	
+<link href="./theme/assets/global/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="./theme/assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="./theme/assets/global/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="./theme/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+	rel="stylesheet" type="text/css" />
+	
+<link href="./theme/assets/global/plugins/select2/css/select2.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="./theme/assets/global/plugins/select2/css/select2-bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="./theme/assets/global/css/components.min.css" rel="stylesheet"
+	id="style_components" type="text/css" />	
+ <!--  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" id="bt-theme"> -->
+  <link rel="stylesheet" href="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/bootstrap-select/dist/css/bootstrap-select.css">
+  <link rel="stylesheet" href="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/chosenjs/chosen.css">
+  <link rel="stylesheet" href="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css">
+  <link rel="stylesheet" href="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/bootstrap-slider/dist/css/bootstrap-slider.css">
+  <link rel="stylesheet" href="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/selectize/dist/css/selectize.bootstrap3.css">
+
+  <link rel="stylesheet" href="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/dist/css/query-builder.default.css" id="qb-theme">
+  <link rel="stylesheet" href="http://mistic100.github.io/jQuery-QueryBuilder/assets/flags/flags.css">
+
+  <style>
+    .flag {
+      display: inline-block;
+    }
+    
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
+}
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
+}
+.btn-xs, .btn-group-xs > .btn {
+    padding: 5px 5px !important;
+    font-size: 11px !important;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.form-control {   
+    height: 29px !important;
+ }
+ .query-builder .rules-group-container { 
+    border: 1px solid #eef1f5 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.bootstrap-select > .dropdown-toggle {
+    background-color: #fff;
+    border: 1px solid #c2cad8;
+}
+
+}
+[data-not] {
+    color: #fff;
+    background-color: #ed6b75;
+    border-color: #ea5460;
+}
+
+  </style>
+</head>
+
+<body> 
+
+	<div class="col-md-12 ">
+		<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-social-dribbble font-green"></i> <span
+						class="caption-subject font-green bold ">JSON Search</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+			<div class="row">
+				<div class="col-lg-12">		 
+	
+				<div id="builder"></div>
+				
+				<br>
+				<div class="span4 pull-right" style="padding-bottom: 20px;">
+				 
+				<div class="btn-group">        
+				<button class="btn btn-success parse-mongo">Apply Filter</button> &nbsp;
+				</div>
+				
+				<div class="btn-group">
+				  <button class="btn btn-danger reset">Reset</button>
+				</div>				
+				</div>
+				
+				
+				<div id="result" class="hide">
+				   <h3>Output</h3>
+				   <pre></pre>
+				 </div>								  
+				 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/jquery/dist/jquery.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/chosenjs/chosen.jquery.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/bootbox/bootbox.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/bootstrap-slider/dist/bootstrap-slider.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/selectize/dist/js/standalone/selectize.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/jquery-extendext/jQuery.extendext.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/sql-parser-mistic/browser/sql-parser.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/dot/doT.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/interactjs/dist/interact.js"></script>
+
+<!-- <script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/dist/js/query-builder.js"></script> -->
+<!-- injector:js -->
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/main.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/defaults.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/core.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/public.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/data.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/template.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/utils.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/model.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/jquery.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/bt-checkbox/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/bt-selectpicker/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/bt-tooltip-errors/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/change-filters/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/chosen-selectpicker/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/filter-description/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/invert/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/mongodb-support/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/not-group/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/sortable/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/sql-support/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/src/plugins/unique-filter/plugin.js"></script>
+<script src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/dist/i18n/query-builder.en.js"></script>
+<!-- endinjector -->
+
+
+ <!--  minified UMD module -->
+<script type="text/javascript" src="./jQueryBuilder/jQuery-QueryBuilder-2.5.2/node_modules/mingo/dist/mingo.min.js"></script>
+ 
+ 
+
+
+<script>
+
+
+
+
+
+FilterData = [] ; 
+$.ajax({
+	type : 'get',
+	url : './AgentControlPath_VIP',
+	cache : false,
+	async : false,
+	data : 'MethodName=GetAll2' ,
+	success : function(data) {
+		FilterData=JSON.parse('[{"id":"ID","field":"ID","type":"integer","input":"text","size":11}, '
+			+ '{"id":"Name","field":"Name","type":"string","input":"text","size":50}, ' 
+			+ '{"id":"Email","field":"Email","type":"string","input":"text","size":50},' 
+			+ '{"id":"Phone","field":"Phone","type":"string","input":"text","size":20}]');
+		//FilterData=JSON.parse(data);
+ 		console.log(FilterData);
+	}
+});
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  $('[data-toggle="tooltip"]').tooltip();
+
+  var $b = $('#builder');
+
+  var options = { allow_empty: true,
+    //default_filter: 'name',
+    sort_filters: true,
+    optgroups: {
+      core: {
+        en: 'Core',
+        fr: 'Coeur'
+      }
+    },
+
+    plugins: {
+      'bt-tooltip-errors': { delay: 100 },
+      'sortable': {icon : 'glyphicon glyphicon-sort'},
+      //'filter-description': { mode: 'bootbox' },
+      'bt-selectpicker': null,
+	   //'chosen-selectpicker': null,
+      'unique-filter': null,
+      'bt-checkbox': { color: 'primary' },
+      'invert': null,
+      'not-group': null
+    },
+    lang: {
+        add_rule: 'Add Rule', // To change label to add rule 
+        add_group: 'Add Group' // To change label to add group 
+    },
+
+    // standard operators in custom optgroups
+    operators: [
+      { type: 'equal', optgroup: 'basic' },
+      { type: 'not_equal', optgroup: 'basic' },
+      { type: 'in', optgroup: 'basic'  },
+      { type: 'not_in', optgroup: 'basic'  },
+      
+      { type: 'less', optgroup: 'numbers' },
+      { type: 'less_or_equal', optgroup: 'numbers' },
+      { type: 'greater', optgroup: 'numbers' },
+      { type: 'greater_or_equal', optgroup: 'numbers' },
+      { type: 'between', optgroup: 'numbers' },
+      { type: 'not_between', optgroup: 'numbers' },
+      
+      { type: 'begins_with', optgroup: 'strings' },
+      { type: 'not_begins_with', optgroup: 'strings' },
+      { type: 'contains', optgroup: 'strings' },
+      { type: 'not_contains', optgroup: 'strings' },
+      { type: 'ends_with', optgroup: 'strings' },
+      { type: 'not_ends_with', optgroup: 'strings'  },
+      
+      { type: 'is_empty' },
+      { type: 'is_not_empty' },
+      { type: 'is_null' },
+      { type: 'is_not_null' }
+    ],
+
+    filters:  FilterData
+  };
+
+  // init
+  
+  $('#builder').queryBuilder(options);
+
+  $('#builder').on('afterCreateRuleInput.queryBuilder', function(e, rule) {
+	//alert(111);
+    if (rule.filter.plugin == 'selectize') {
+      rule.$el.find('.rule-value-container').css('min-width', '200px')
+        .find('.selectize-control').removeClass('form-control');
+    }
+  });
+ 
+  // reset builder
+  $('.reset').on('click', function() {
+    $('#builder').queryBuilder('reset');
+    $('#result').addClass('hide').find('pre').empty();
+  });
+ 
+  var QueryFilter = [] ;
+  $('.parse-mongo').on('click', function() {
+	  QueryFilter = $('#builder').queryBuilder('getMongo');
+	  CreateFilter();
+	  
+    //$('#result').removeClass('hide').find('pre').html(
+    //JSON.stringify($('#builder').queryBuilder('getMongo'),undefined, 2));
+  });
+
+ 
+function CreateFilter(){ 
+mingo.setup({
+    key: '_id' // default
+});
+
+let query = new mingo.Query(QueryFilter);
+  
+ let someobject = [
+	  {
+		  Name:"Name1",
+		  age : 4
+	  },
+	  {
+		  Name:"Name2",
+		  age : 0,
+		  company: {
+			  name: "Globitel",
+			  dept: [{
+				  name: "OS",
+				  products: "VIx"
+			  }, 
+			  {
+				  name: "CC",
+				  products: "speachlog"
+			  }]
+		  }
+	  },{
+		  Name:"Name3",
+		  age : 18
+	  },
+	  {
+		  Name:"Name4",
+		  age : 12
+	  },{
+		  Name:"Name5",
+		  age : 15
+	  },
+	  {
+		  Name:"Name6",
+		  age : 2
+	  },{
+		  Name:"Name7",
+		  age : 20
+	  },
+	  {
+		  Name:"Name8",
+		  age : 5
+	  }
+	];
+
+ 
+ 
+if(query.test(someobject)){
+console.log("Query is match");	
+}else{
+console.log("Query isn't match");	
+}
+
+
+//filter collection with find()
+let cursor = query.find(someobject)
+//count matches. exhausts cursor
+$('#Count').text(cursor.count());
+console.log(cursor.all()); 
+
+
+}
+
+$( document ).ready(function() {
+	$('.group-actions > button').css("margin-left", "10px")
+});
+
+</script>
+</body>
+</html>

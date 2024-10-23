@@ -1,0 +1,53 @@
+th {
+	white-space: nowrap;
+
+}
+
+.toolbar {
+	float: right;
+}
+
+.top{
+height : 50px;
+}
+
+.dataTables_filter {
+	float: right;
+	margin-right:5px;
+
+}
+
+.input-sm {
+	height : 30px;
+}
+.DataTables_sort_wrapper {
+	white-space: nowrap;
+}
+.a {
+height : 20px;
+}
+	
+white-space
+:
+ 
+nowrap
+;
+
+.scrollStyle
+{
+overflow-x:auto;
+}
+.New-grid-filter{float: left;display: inline-flex;}    
+.New-grid-paging{float: right;}
+
+ .dataTables_info {
+
+padding-top : 5px;
+
+}
+
+.dataTables_length {
+	
+	margin-right:50px;
+
+} 

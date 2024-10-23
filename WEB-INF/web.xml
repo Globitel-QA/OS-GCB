@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>OC</display-name>
+	<session-config>
+		<session-timeout>-1</session-timeout>
+		<!-- The below should be enabled only if the web is running over https -->
+		<!-- <tracking-mode>SSL</tracking-mode> -->
+		<cookie-config>
+			<http-only>true</http-only>
+		</cookie-config>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>AdminTree.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- Main Order Care DB connection parameters -->
+	<context-param>
+		<param-name>url</param-name>
+		<param-value>jdbc:mysql://172.50.51.71:3306/gcb_qa?useEncoding=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8</param-value>
+		<param-value>jdbc:mysql://172.50.51.71:3306/gcb_qa?useEncoding=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8&amp;allowPublicKeyRetrieval=true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>username</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>password</param-name>
+		<param-value>GlobitelQA@2024</param-value>
+	</context-param>
+	<context-param>
+		<param-name>driver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>IP</param-name>
+		<param-value>172.50.51.71</param-value>
+	</context-param>
+	<context-param>
+		<param-name>Port</param-name>
+		<param-value>3306</param-value>
+	</context-param>
+	<context-param>
+		<param-name>DataBase</param-name>
+		<param-value>gcb_qa</param-value>
+	</context-param>
+
+
+	<!-- Web SDK connection parameters -->
+	<context-param>
+		<param-name>websdk_driver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>websdk_url</param-name>
+		<param-value>jdbc:mysql://172.50.51.71:3306/websdk_qa?useEncoding=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8</param-value>
+<!--		<param-value>jdbc:mysql://localhost:3306/web_sdk_v2?useEncoding=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8&amp;allowPublicKeyRetrieval=true</param-value>-->
+	</context-param>
+	<context-param>
+		<param-name>websdk_username</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>websdk_password</param-name>
+		<param-value>GlobitelQA@2024</param-value>
+	</context-param>
+
+	<!-- Order Care Reporting DB connection parameters, this to read reports 
+		data -->
+	<context-param>
+		<param-name>urlReport_reporting</param-name>
+		<param-value>jdbc:mysql://172.50.51.71:3306/gcb_qa?useEncoding=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8</param-value>
+	</context-param>
+	<context-param>
+		<param-name>usernameReport_reporting</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>passwordReport_reporting</param-name>
+		<param-value>GlobitelQA@2024</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>connectionType</param-name>
+		<param-value>mysql</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>EnableAutoReports</param-name>
+		<param-value>1</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>AutoReportsPath</param-name>
+		<param-value>c:\ExportedAutoReports\\</param-value>
+	</context-param>
+
+	<!-- 1: Enable the copy and paste on the input texts on all web pages 0: 
+		Disable copy and paste -->
+	<context-param>
+		<param-name>EnableCopyPasteOnAllWebPages</param-name>
+		<param-value>1</param-value>
+	</context-param>
+
+	<!-- Default latitude, longitude, MapUrl and limit values to focus all maps 
+		on these values -->
+	<context-param>
+		<param-name>Latitude</param-name>
+		<param-value>31.963158</param-value>
+	</context-param>
+	<context-param>
+		<param-name>Longitude</param-name>
+		<param-value>35.930359</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ZoomLevel</param-name>
+		<param-value>9</param-value>
+	</context-param>
+	<context-param>
+		<param-name>MapUrl</param-name>
+		<param-value>https://mt1.google.com/vt/lyrs=m&amp;x={x}&amp;y={y}&amp;z={z}</param-value>
+	</context-param>
+
+
+
+
+	<!-- if 0 read from production server , 1 read from stage server (test bed), 
+		to determine that we use the web as production or test bed -->
+	<context-param>
+		<param-name>ServerType</param-name>
+		<param-value>0</param-value>
+	</context-param>
+
+
+	<!-- This key is used to know the minimum length of the password used for 
+		the users module -->
+	<context-param>s
+		<param-name>PasswordMinimumLength</param-name>
+		<param-value>2</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>BackendServiceIPAddress</param-name> <!-- the IP address of the host which running the backend service -->
+		<param-value>https://172.50.51.71:9010/GCB_API</param-value>
+	</context-param>
+
+
+	<display-name>Viewer</display-name>
+	<context-param>
+		<param-name>crystal_image_uri</param-name>
+		<param-value>crystalreportviewers</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>CrystalReportViewerServlet</servlet-name>
+		<servlet-class>com.crystaldecisions.report.web.viewer.CrystalReportViewerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CrystalReportViewerServlet</servlet-name>
+		<url-pattern>/CrystalReportViewerHandler</url-pattern>
+	</servlet-mapping>
+	<context-param>
+		<param-name>crystal_image_use_relative</param-name>
+		<param-value>webapp</param-value>
+	</context-param>
+</web-app>

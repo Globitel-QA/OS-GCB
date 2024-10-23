@@ -1,0 +1,51 @@
+﻿# To be inserted in websdk database to privileges table: 
+INSERT INTO modules(ID, Name, URL, tables_names, action, EnableTranslate) VALUES
+(106, 'GCB', 'http://localhost:8080/GCB/AdminTree.jsp', NULL, True, False);
+
+
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Dashboard', 'Dashboard', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('SystemSettings_View', 'System Settings View Only', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('SystemSettings_Update', 'System Settings Update with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Zones_View', 'Zones with View Only', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Zones_Update', 'Zones Update with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Zones_Delete', 'Zones Delete with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Zones_Add', 'Zones Add with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Campaigns_View', 'Campaigns View Only', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Campaigns_Update', 'Campaigns Update with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Campaigns_Cancel', 'Campaigns Cancel with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Campaigns_Add', 'Campaigns Add with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Auto_Reports_Add', 'Auto Reports Add with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Auto_Reports_Delete', 'Auto Reports Delete with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Agent_View', 'Agent View Only', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Agent_Add', 'Agent Add with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Agent_Update', 'Agent Update with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Agent_Delete', 'Agent Delete with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Auto_Reports_View', 'Auto Reports View Only', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('AboutSystem_View', 'About System View Only', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Report_ActionLog', 'Action Log Report', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Auto_Reports_Add', 'Auto Reports Add with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Auto_Reports_Delete', 'Auto Reports Delete with View', '106', -1);
+INSERT INTO web_sdk_v2.privileges(Const_Name, Display_Name, Module_ID, AccountHolder_Type) VALUES
+('Auto_Reports_View', 'Auto Reports View Only', '106', -1);

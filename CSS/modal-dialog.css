@@ -1,0 +1,206 @@
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1000; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-title {
+	margin: 0;
+	color: #333;
+	font-size: 22px;
+	line-height: 20px;
+}
+/* Modal Content */
+.modal-content {
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #999;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 6px !important;
+	width: 32%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s;
+}
+
+.modal-header {
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5;
+	color: #333;
+}
+
+.modal-body {
+	position: relative;
+	padding: 15px;
+}
+
+.modal-footer {
+	padding: 15px;
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+}
+/* Add Animation */
+@
+-webkit-keyframes animatetop {
+	from {top: -300px;
+	opacity: 0
+}
+
+to {
+	top: 0;
+	opacity: 1
+}
+
+}
+@
+keyframes animatetop {
+	from {top: -300px;
+	opacity: 0
+}
+
+to {
+	top: 0;
+	opacity: 1
+}
+
+}
+
+/* The Close Button */
+.close {
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.modal-pre {
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 13px;
+	line-height: 1.42857;
+	word-break: break-all;
+	word-wrap: break-word;
+	color: #333;
+	background-color: #fefefe !important;
+	border: 0px !important;
+}
+
+
+
+/* Color Variables */
+$color-question: #000 ;
+	/* Social Icon Mixin */ 
+ @mixin social-icon ($color) {
+	background: $color;
+	background: linear-gradient(tint($ color, 5%), shade($ color, 5%));
+	border-bottom: 1px solid shade($ color, 20%);
+	color: tint($ color, 50%); &: hover { color : tint( $ color, 80%);
+	text-shadow: 0px 1px 0px shade($ color, 20%);
+}
+
+.tooltip {
+	background: $color;
+	background: linear-gradient(tint($ color, 15%),$color);
+	color: tint($ color, 80%);
+	&:
+	after
+	{
+	border-top-color
+	:
+	$
+	color;
+}
+
+}
+}
+
+/* Social Icons */
+.social-icons {
+	display: flex;
+}
+
+.social-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin: 0 0.5rem;
+	border-radius: 50%;
+	cursor: pointer;
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-size: 2.5rem;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+	transition: all 0.15s ease; &: hover { color : #fff; . tooltip {
+	visibility : visible;
+	opacity: 1;
+	transform: translate(-50%, -150%);
+}
+
+}
+&
+:active {
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+ 
+	
+}
+
+i {
+	position: relative;
+	top: 1px;
+}
+
+}
+
+/* Tooltips */
+.tooltip {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	padding: 0.8rem 1rem;
+	border-radius: 3px;
+	font-size: 0.8rem;
+	font-weight: bold;
+	opacity: 0;
+	pointer-events: none;
+	text-transform: uppercase;
+	transform: translate(-50%, -100%);
+	transition: all 0.3s ease;
+	z-index: 1; &: after { display : block;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	content: "";
+	border: solid;
+	border-width: 10px 10px 0 10px;
+	border-color: transparent;
+	transform: translate(-50%, 100%);
+}
+}

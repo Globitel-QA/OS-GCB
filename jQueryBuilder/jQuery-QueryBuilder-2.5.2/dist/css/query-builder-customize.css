@@ -1,0 +1,103 @@
+.flag {
+ display: inline-block;
+}
+   
+.btn-xs, .btn-group-xs > .btn {
+    padding: 5px 5px !important;
+    font-size: 11px !important;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.form-control {   
+    height: 26px !important;
+ }
+ .query-builder .rules-group-container { 
+    border: 1px solid #eef1f5 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.bootstrap-select > .dropdown-toggle {
+    background-color: #fff;
+    border: 1px solid #c2cad8;
+}
+
+}
+[data-not] {
+    color: #fff;
+    background-color: #ed6b75;
+    border-color: #ea5460;
+}
+.form-control, output {
+    font-size: 11px;
+}
+
+ 
+.group-actions > button {
+    margin-left: 5px !important;
+}
+.rule-value-container{
+    font-family: inherit;
+    font-size: 11px;
+}
+
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #f6f6f6;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    font-size: 14px;
+    background-color: #f6f6f6;
+    color: #555;
+}
+
+.select2-results__option {
+    width: auto;
+    background-color: #fff;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #555;
+    font-weight: 300;
+    line-height: 18px;
+    white-space: nowrap;
+    padding: 8px;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #c2cad8;
+}
+.select2-dropdown{
+   border: 1px solid #c2cad8;
+}
+.select2-container--open .select2-dropdown--below {
+    width: auto !important ;
+    min-width: 150px;
+	box-shadow: 5px 5px rgba(102,102,102,.1);
+    z-index: 1000;
+    list-style: none;
+    text-shadow: none;
+    background-color: #fff;
+    border: 1px solid #eee;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+}
+.select2-container{ 
+    width: auto !important;
+    min-width: 150px;
+}
+.select2-container .select2-selection--single ,
+.select2-container--default .select2-search--dropdown .select2-search__field ,
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    height: 26px;
+}
+ 
+ 
+button.btn.reset:hover {
+    background: #d08566 !important;
+    border-color: #ca5e316b !important;
+}

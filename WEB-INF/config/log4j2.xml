@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+		</Console>
+		
+		<RollingFile name="websdk" fileName="C:/Weblog/WebSDK/websdk.log"
+			filePattern="C:/Weblog/WebSDK/websdk.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="web1" fileName="C:/Weblog/web1/web1.log"
+			filePattern="C:/Weblog/web1/web1.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+			
+		<RollingFile name="its" fileName="C:/Weblog/ITS/app.log"
+			filePattern="C:/Weblog/ITS/app.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="ra" fileName="C:/Weblog/RA/app.log"
+			filePattern="C:/Weblog/ra/app.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="nor" fileName="C:/Weblog/NOR/app.log"
+			filePattern="C:/Weblog/nor/app.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="beepcall" fileName="C:/Weblog/BeepCall/app.log"
+			filePattern="C:/Weblog/BeepCall/app.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="cbr" fileName="C:/Weblog/CBR/app.log"
+			filePattern="C:/Weblog/CBR/app.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="cli_screening" fileName="C:/Weblog/CLI_Screening/app.log"
+		filePattern="C:/Weblog/nor/app.log.%d{yyyy-MM-dd-HH}.%i">
+		<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+		<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+		<Policies>
+			<TimeBasedTriggeringPolicy interval="1"
+				modulate="true" />
+			<SizeBasedTriggeringPolicy size="10 MB" />
+		</Policies>
+		<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="ordercare" fileName="C:/Weblog/ordercare/ordercare.log"
+		filePattern="C:/Weblog/ordercare/ordercare.log.%d{yyyy-MM-dd-HH}.%i">
+		<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+		<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+		<Policies>
+			<TimeBasedTriggeringPolicy interval="1"
+				modulate="true" />
+			<SizeBasedTriggeringPolicy size="10 MB" />
+		</Policies>
+		<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		 
+		
+		<RollingFile name="glg" fileName="C:/Weblog/glg/glg.log"
+			filePattern="C:/Weblog/glg/glg.log.%d{yyyy-MM-dd-HH}.%i">
+			<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+			<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="myriad" fileName="C:/Weblog/myriad/myriad.log"
+		filePattern="C:/Weblog/myriad/myriad.log.%d{yyyy-MM-dd-HH}.%i">
+		<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+		<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+		<Policies>
+			<TimeBasedTriggeringPolicy interval="1"
+				modulate="true" />
+			<SizeBasedTriggeringPolicy size="10 MB" />
+		</Policies>
+		<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		
+<!--		<RollingFile name="myriad" fileName="C:/Weblog/gnr/gnr.log"-->
+<!--		filePattern="C:/Weblog/gnr/gnr.log.%d{yyyy-MM-dd-HH}.%i">-->
+<!--		&lt;!&ndash; <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> &ndash;&gt;-->
+<!--		<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />-->
+<!--		<Policies>-->
+<!--			<TimeBasedTriggeringPolicy interval="1"-->
+<!--				modulate="true" />-->
+<!--			<SizeBasedTriggeringPolicy size="10 MB" />-->
+<!--		</Policies>-->
+<!--		&lt;!&ndash; <DefaultRolloverStrategy max="10"/> &ndash;&gt;-->
+<!--		</RollingFile>-->
+		
+		<RollingFile name="rs" fileName="C:/Weblog/rs/rs.log"
+		filePattern="C:/Weblog/rs/rs.log.%d{yyyy-MM-dd-HH}.%i">
+		<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+		<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+		<Policies>
+			<TimeBasedTriggeringPolicy interval="1"
+				modulate="true" />
+			<SizeBasedTriggeringPolicy size="10 MB" />
+		</Policies>
+		<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+		<RollingFile name="rs_campaigns" fileName="C:/Weblog/rs_campaigns/rs_campaigns.log"
+		filePattern="C:/Weblog/rs_campaigns/rs_campaigns.log.%d{yyyy-MM-dd-HH}.%i">
+		<!-- <PatternLayout pattern="%d %p %c{1.} [%t] %m %ex%n" /> -->
+		<PatternLayout pattern="[%d{MMM dd HH:mm:ss.SSS}] %-5level %msg%n" />
+		<Policies>
+			<TimeBasedTriggeringPolicy interval="1"
+				modulate="true" />
+			<SizeBasedTriggeringPolicy size="10 MB" />
+		</Policies>
+		<!-- <DefaultRolloverStrategy max="10"/> -->
+		</RollingFile>
+		
+	</Appenders>
+	<Loggers>
+		<Logger name="websdk.log" level="DEBUG">
+			<AppenderRef ref="websdk" level="DEBUG" />
+		</Logger>
+		<Logger name="its.log" level="DEBUG">
+			<AppenderRef ref="its" level="DEBUG" />
+		</Logger>
+		<Logger name="rs_campaigns.log" level="DEBUG">
+			<AppenderRef ref="rs_campaigns" level="DEBUG" />
+		</Logger>
+		<Logger name="rs.log" level="DEBUG">
+			<AppenderRef ref="rs" level="DEBUG" />
+		</Logger>
+		<Logger name="ra.log" level="DEBUG">
+			<AppenderRef ref="ra" level="DEBUG" />
+		</Logger>
+		<Logger name="web1.log" level="DEBUG">
+			<AppenderRef ref="web1" level="DEBUG" />
+		</Logger>
+		<Logger name="nor.log" level="DEBUG">
+			<AppenderRef ref="nor" level="DEBUG" />
+		</Logger>
+		<Logger name="beepcall.log" level="DEBUG">
+			<AppenderRef ref="beepcall" level="DEBUG" />
+		</Logger>
+		<Logger name="cbr.log" level="DEBUG">
+			<AppenderRef ref="cbr" level="DEBUG" />
+		</Logger>
+		<Logger name="cli_screening.log" level="DEBUG">
+			<AppenderRef ref="cli_screening" level="DEBUG" />
+		</Logger>
+		<Logger name="ordercare.log" level="DEBUG">
+			<AppenderRef ref="ordercare" level="DEBUG" />
+		</Logger>
+		<Logger name="glg.log" level="DEBUG">
+			<AppenderRef ref="glg" level="DEBUG" />
+		</Logger>
+		
+		<Logger name="myriad.log" level="DEBUG">
+			<AppenderRef ref="myriad" level="DEBUG" />
+		</Logger>
+		
+<!--		<Logger name="gnr.log" level="DEBUG">-->
+<!--			<AppenderRef ref="gnr" level="DEBUG" />-->
+<!--		</Logger>-->
+		
+		<Root level="trace">
+			<AppenderRef ref="console" level="DEBUG" />
+		</Root>
+	</Loggers>
+</Configuration>
